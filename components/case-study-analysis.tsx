@@ -7,43 +7,43 @@ import { Progress } from "@/components/ui/progress"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 import { TrendingUp, AlertTriangle, Target, Lightbulb, Clock, Zap, Music, Globe } from "lucide-react"
 
-const ckayData = [
-  { day: "Aug 1", streams: 45000, searches: 8000, social: 12000 },
-  { day: "Aug 15", streams: 52000, searches: 9500, social: 15000 },
-  { day: "Sep 1", streams: 180000, searches: 35000, social: 85000 }, // TikTok dance challenge starts
-  { day: "Sep 15", streams: 650000, searches: 120000, social: 280000 },
-  { day: "Oct 1", streams: 1200000, searches: 250000, social: 450000 },
-  { day: "Oct 15", streams: 2100000, searches: 380000, social: 680000 },
+const mikeEjeaghaData = [
+  { day: "May 1", streams: 12000, searches: 2000, social: 3000 },
+  { day: "May 15", streams: 15000, searches: 2500, social: 4000 },
+  { day: "Jun 1", streams: 85000, searches: 18000, social: 45000 }, // Branjotter's viral skit starts
+  { day: "Jun 15", streams: 320000, searches: 65000, social: 180000 },
+  { day: "Jul 1", streams: 750000, searches: 140000, social: 420000 },
+  { day: "Jul 15", streams: 1200000, searches: 220000, social: 680000 },
 ]
 
 const dataSignals = [
   {
-    signal: "TikTok Dance Challenge Creation",
+    signal: "Branjotter Comedy Skit Goes Viral",
     timing: "2 weeks before peak",
-    strength: 92,
+    strength: 95,
     actionable: true,
-    description: "Organic dance challenges emerging from African creators",
+    description: "Nigerian comedian's skit featuring 'Gwo Gwo Gwo Gwo' gains massive traction",
   },
   {
-    signal: "Cross-Platform Migration",
+    signal: "Cross-Generational Appeal Discovery",
     timing: "1 week before peak",
     strength: 88,
     actionable: true,
-    description: "Content spreading from TikTok to Instagram Reels and YouTube Shorts",
+    description: "Young Nigerians discovering classic highlife through viral content",
   },
   {
-    signal: "International Creator Adoption",
-    timing: "3 days before peak",
-    strength: 95,
+    signal: "Nostalgia Trend Amplification",
+    timing: "5 days before peak",
+    strength: 92,
     actionable: true,
-    description: "US and European influencers picking up the dance trend",
+    description: "Older Nigerians sharing memories and stories about the original song",
   },
   {
-    signal: "Playlist Algorithm Boost",
-    timing: "24 hours before peak",
+    signal: "Streaming Platform Algorithm Boost",
+    timing: "48 hours before peak",
     strength: 85,
     actionable: false,
-    description: "Spotify and Apple Music algorithms detecting viral momentum",
+    description: "Spotify and Apple Music detecting sudden search spike for classic highlife",
   },
 ]
 
@@ -51,59 +51,59 @@ const proactiveStrategy = [
   {
     phase: "Pre-Intelligence (3-6 months ahead)",
     actions: [
-      "Monitor African creator communities for emerging trends",
-      "Build relationships with top Afrobeats dancers and choreographers",
-      "Track cross-cultural music adoption patterns",
-      "Analyze successful Afrobeats viral moments for patterns",
+      "Monitor Nigerian comedy and entertainment content creators",
+      "Track usage of classic Mavin catalog in viral content",
+      "Build relationships with top Nigerian comedians and content creators",
+      "Analyze cross-generational music consumption patterns",
     ],
     timeline: "Ongoing",
     priority: "Foundation",
   },
   {
-    phase: "Early Detection (2-4 weeks ahead)",
+    phase: "Early Detection (1-2 weeks ahead)",
     actions: [
-      "TikTok sound usage analytics monitoring",
-      "African diaspora community engagement tracking",
-      "Dance challenge potential assessment",
-      "Prepare creator collaboration packages",
+      "Comedy content monitoring for music usage",
+      "Social media sentiment analysis for nostalgia trends",
+      "Cross-platform viral content tracking",
+      "Prepare catalog remastering and distribution",
     ],
-    timeline: "2-4 weeks",
+    timeline: "1-2 weeks",
     priority: "Preparation",
   },
   {
-    phase: "Rapid Response (24-72 hours)",
+    phase: "Rapid Response (24-48 hours)",
     actions: [
-      "Amplify organic dance challenges with paid promotion",
-      "Deploy international creator outreach campaigns",
-      "Coordinate cross-platform content distribution",
-      "Launch targeted streaming platform features",
+      "Immediately remaster and distribute the viral track",
+      "Coordinate with streaming platforms for playlist placement",
+      "Launch targeted social media campaigns amplifying the trend",
+      "Connect with the viral content creator for official collaboration",
     ],
-    timeline: "24-72 hours",
+    timeline: "24-48 hours",
     priority: "Critical",
   },
 ]
 
 const mavinApplication = [
   {
-    opportunity: "Rema TikTok Optimization",
-    description: "Leverage Rema's existing global fanbase for viral TikTok moments",
-    strategy: "Create dance-friendly versions of 'Calm Down' and collaborate with top choreographers",
-    expectedImpact: "500% streaming increase in emerging markets",
-    timeline: "Q1 2024",
-  },
-  {
-    opportunity: "Ayra Starr Dance Challenges",
-    description: "Position Ayra Starr tracks for organic dance challenge creation",
-    strategy: "Partner with African dance creators and provide exclusive content",
-    expectedImpact: "Cross-cultural breakthrough in US and European markets",
-    timeline: "Q2 2024",
-  },
-  {
-    opportunity: "Afrobeats Algorithm Mastery",
-    description: "TikTok algorithm currently favoring Afrobeats and African creators",
-    strategy: "Systematic creator seeding program across African diaspora communities",
-    expectedImpact: "Viral moment potential worth $5M+ in global streaming revenue",
+    opportunity: "Rema Classic Catalog Revival",
+    description: "Leverage viral moments to reintroduce Rema's earlier tracks to new audiences",
+    strategy: "Monitor comedy and entertainment content for organic Rema track usage",
+    expectedImpact: "300% streaming increase for catalog tracks during viral moments",
     timeline: "Immediate",
+  },
+  {
+    opportunity: "Ayra Starr Nostalgia Positioning",
+    description: "Position Ayra Starr as bridge between classic Afrobeats and modern sound",
+    strategy: "Create content connecting her music to classic Nigerian artists",
+    expectedImpact: "Cross-generational fanbase expansion and cultural relevance",
+    timeline: "Q1 2025",
+  },
+  {
+    opportunity: "Comedy Creator Partnerships",
+    description: "Build systematic relationships with top Nigerian content creators",
+    strategy: "Provide exclusive access to Mavin catalog for creative content",
+    expectedImpact: "Viral moment potential worth $2M+ in streaming revenue",
+    timeline: "Ongoing",
   },
 ]
 
@@ -114,7 +114,7 @@ export function CaseStudyAnalysis() {
       <div className="space-y-2">
         <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Data-Driven Success Story</h1>
         <p className="text-base sm:text-lg text-muted-foreground">
-          How TikTok data could have accelerated CKay's Love Nwantiti breakthrough
+          How viral content monitoring could have accelerated Mike Ejeagha's "Gwo Gwo Gwo Gwo" resurgence
         </p>
       </div>
 
@@ -123,33 +123,37 @@ export function CaseStudyAnalysis() {
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center space-x-2 text-lg sm:text-xl">
             <Music className="h-5 w-5 text-primary flex-shrink-0" />
-            <span>The CKay Love Nwantiti Phenomenon</span>
+            <span>The Mike Ejeagha "Gwo Gwo Gwo Gwo" Revival</span>
           </CardTitle>
           <CardDescription className="text-sm sm:text-base">
-            From 2019 release to global TikTok sensation in 2021
+            From 1983 classic highlife to 2024 viral sensation through comedy content
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <div className="text-center p-3 sm:p-4 bg-primary/5 rounded-lg">
-              <div className="text-xl sm:text-2xl font-bold text-primary">4,600%</div>
+              <div className="text-xl sm:text-2xl font-bold text-primary">9,900%</div>
               <div className="text-xs sm:text-sm text-muted-foreground">Stream increase during viral peak</div>
             </div>
             <div className="text-center p-3 sm:p-4 bg-accent/5 rounded-lg">
               <div className="text-xl sm:text-2xl font-bold text-accent">#1</div>
-              <div className="text-xs sm:text-sm text-muted-foreground">Global viral charts across 15 countries</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">
+                Trending on Nigerian social media platforms
+              </div>
             </div>
             <div className="text-center p-3 sm:p-4 bg-chart-3/5 rounded-lg">
               <div className="text-xl sm:text-2xl font-bold" style={{ color: "hsl(var(--chart-3))" }}>
-                2 years
+                41 years
               </div>
-              <div className="text-xs sm:text-sm text-muted-foreground">Gap between release and viral moment</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">
+                Gap between original release and viral moment
+              </div>
             </div>
           </div>
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-            CKay's "Love Nwantiti" was released in 2019 but became a global phenomenon in 2021 through organic TikTok
-            dance challenges, demonstrating how African artists can achieve massive international success through social
-            media virality and cross-cultural adoption.
+            Mike Ejeagha's 1983 highlife classic "Gwo Gwo Gwo Gwo" experienced a massive resurgence in 2024 when
+            Nigerian comedian Branjotter used it in a viral skit, demonstrating how classic African music can find new
+            audiences through modern content creators and cross-generational appeal.
           </p>
         </CardContent>
       </Card>
@@ -162,12 +166,12 @@ export function CaseStudyAnalysis() {
             <span>Viral Moment Timeline</span>
           </CardTitle>
           <CardDescription className="text-sm sm:text-base">
-            Stream counts, searches, and social mentions during TikTok breakthrough
+            Stream counts, searches, and social mentions during comedy-driven breakthrough
           </CardDescription>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={ckayData}>
+            <LineChart data={mikeEjeaghaData}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
               <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" fontSize={12} tick={{ fontSize: 12 }} />
               <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tick={{ fontSize: 12 }} />
@@ -230,7 +234,7 @@ export function CaseStudyAnalysis() {
             <span>Data Signals Mavin Could Have Caught</span>
           </CardTitle>
           <CardDescription className="text-sm sm:text-base">
-            Early warning indicators that predicted the TikTok viral moment
+            Early warning indicators that predicted the comedy-driven viral moment
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -264,10 +268,10 @@ export function CaseStudyAnalysis() {
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center space-x-2 text-lg sm:text-xl">
             <Target className="h-5 w-5 text-primary flex-shrink-0" />
-            <span>Mavin's Proactive TikTok Strategy</span>
+            <span>Mavin's Proactive Content Monitoring Strategy</span>
           </CardTitle>
           <CardDescription className="text-sm sm:text-base">
-            How we'd have accelerated CKay's success with early data insights
+            How we'd have accelerated Mike Ejeagha's success with early content intelligence
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -314,7 +318,7 @@ export function CaseStudyAnalysis() {
             <span>Current Mavin Opportunities</span>
           </CardTitle>
           <CardDescription className="text-sm sm:text-base">
-            Applying CKay insights to Rema, Ayra Starr, and our roster
+            Applying Mike Ejeagha insights to Rema, Ayra Starr, and our roster
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -355,19 +359,19 @@ export function CaseStudyAnalysis() {
             <span>Strategic Takeaways</span>
           </CardTitle>
           <CardDescription className="text-sm sm:text-base">
-            Critical insights for African artists going global via TikTok
+            Critical insights for leveraging viral content moments for catalog revival
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <div className="space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-foreground">TikTok Intelligence Systems</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-foreground">Content Intelligence Systems</h3>
               <div className="space-y-3">
                 {[
-                  "Monitor African creator communities for emerging dance trends",
-                  "Track cross-cultural adoption patterns in diaspora markets",
-                  "Analyze sound usage analytics across different regions",
-                  "Build relationships with top Afrobeats choreographers",
+                  "Monitor Nigerian comedy and entertainment creators systematically",
+                  "Track organic usage of classic catalog in viral content",
+                  "Analyze cross-generational music consumption patterns",
+                  "Build relationships with top content creators and comedians",
                 ].map((insight, index) => (
                   <div key={index} className="flex items-start space-x-2 p-2 bg-primary/5 rounded-lg">
                     <Globe className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -378,13 +382,13 @@ export function CaseStudyAnalysis() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-foreground">Viral Amplification Tactics</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-foreground">Rapid Response Capabilities</h3>
               <div className="space-y-3">
                 {[
-                  "72-hour creator seeding programs for organic challenges",
-                  "Cross-platform content distribution strategies",
-                  "International influencer collaboration networks",
-                  "Algorithm-optimized content format variations",
+                  "24-hour catalog remastering and distribution pipeline",
+                  "Streaming platform playlist placement coordination",
+                  "Creator collaboration and licensing frameworks",
+                  "Cross-platform viral amplification strategies",
                 ].map((capability, index) => (
                   <div key={index} className="flex items-start space-x-2 p-2 bg-accent/5 rounded-lg">
                     <Zap className="h-4 w-4 text-accent mt-0.5 flex-shrink-0" />
