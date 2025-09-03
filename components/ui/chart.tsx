@@ -122,7 +122,7 @@ function ChartTooltipContent({
   labelKey,
 }: {
   active?: boolean
-  payload?: any[] // ✅ force payload to exist
+  payload?: any[]
   className?: string
   hideLabel?: boolean
   hideIndicator?: boolean
