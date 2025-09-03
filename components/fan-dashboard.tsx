@@ -4,41 +4,74 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from "recharts"
-import { TrendingUp, Users, Globe, Music, MapPin, Target, Zap, Eye, Heart } from "lucide-react"
+import { TrendingUp, Users, Globe, Music, MapPin, Target, Zap, Eye, Heart, Bell, Filter } from "lucide-react"
+import { useState } from "react"
 
-const dashboardMetrics = [
+const artistData = {
+  rema: {
+    name: "Rema",
+    totalFans: "35.1M",
+    monthlyGrowth: "2.8M",
+    activeMarkets: 47,
+    engagementRate: "2.51%",
+    metrics: {
+      totalFansChange: "+18.5%",
+      monthlyGrowthChange: "+22.3%",
+      activeMarketsChange: "+3",
+      engagementRateChange: "+0.3%",
+    },
+  },
+  ayrastarr: {
+    name: "Ayra Starr",
+    totalFans: "28.4M",
+    monthlyGrowth: "3.2M",
+    activeMarkets: 42,
+    engagementRate: "3.8%",
+    metrics: {
+      totalFansChange: "+24.7%",
+      monthlyGrowthChange: "+31.2%",
+      activeMarketsChange: "+5",
+      engagementRateChange: "+0.7%",
+    },
+  },
+  crayon: {
+    name: "Crayon",
+    totalFans: "12.8M",
+    monthlyGrowth: "1.1M",
+    activeMarkets: 28,
+    engagementRate: "4.2%",
+    metrics: {
+      totalFansChange: "+42.1%",
+      monthlyGrowthChange: "+38.9%",
+      activeMarketsChange: "+8",
+      engagementRateChange: "+1.2%",
+    },
+  },
+}
+
+const realTimeAlerts = [
   {
-    title: "Total Fans",
-    value: "35.1M",
-    change: "+18.5%",
-    trend: "up",
-    icon: Users,
-    description: "Global fanbase across all platforms",
+    type: "Trending",
+    message: "TikTok sound usage up 35% in South Africa - last 24 hours",
+    artist: "Ayra Starr",
+    priority: "High",
+    time: "2 min ago",
   },
   {
-    title: "Monthly Growth",
-    value: "2.8M",
-    change: "+22.3%",
-    trend: "up",
-    icon: TrendingUp,
-    description: "New fans acquired this month",
+    type: "Opportunity",
+    message: "YouTube watch time surged in France - week-over-week",
+    artist: "Rema",
+    priority: "Medium",
+    time: "15 min ago",
   },
   {
-    title: "Active Markets",
-    value: "47",
-    change: "+3",
-    trend: "up",
-    icon: Globe,
-    description: "Countries with significant fan presence",
-  },
-  {
-    title: "Engagement Rate",
-    value: "2.51%",
-    change: "+0.3%",
-    trend: "up",
-    icon: Music,
-    description: "Average engagement across platforms",
+    type: "Alert",
+    message: "Spotify playlist adds declining in UK market",
+    artist: "Crayon",
+    priority: "Critical",
+    time: "1 hour ago",
   },
 ]
 
@@ -92,6 +125,44 @@ const aiInsights = [
 ]
 
 export function FanDashboard() {
+  const [selectedArtist, setSelectedArtist] = useState<keyof typeof artistData>("rema")
+  const currentArtist = artistData[selectedArtist]
+
+  const dashboardMetrics = [
+    {
+      title: "Total Fans",
+      value: currentArtist.totalFans,
+      change: currentArtist.metrics.totalFansChange,
+      trend: "up",
+      icon: Users,
+      description: "Global fanbase across all platforms",
+    },
+    {
+      title: "Monthly Growth",
+      value: currentArtist.monthlyGrowth,
+      change: currentArtist.metrics.monthlyGrowthChange,
+      trend: "up",
+      icon: TrendingUp,
+      description: "New fans acquired this month",
+    },
+    {
+      title: "Active Markets",
+      value: currentArtist.activeMarkets.toString(),
+      change: currentArtist.metrics.activeMarketsChange,
+      trend: "up",
+      icon: Globe,
+      description: "Countries with significant fan presence",
+    },
+    {
+      title: "Engagement Rate",
+      value: currentArtist.engagementRate,
+      change: currentArtist.metrics.engagementRateChange,
+      trend: "up",
+      icon: Music,
+      description: "Average engagement across platforms",
+    },
+  ]
+
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
@@ -113,11 +184,81 @@ export function FanDashboard() {
   return (
     <div className="space-y-6 sm:space-y-8">
       {/* Header */}
-      <div className="space-y-2">
-        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Fan Intelligence Dashboard</h1>
-        <p className="text-base sm:text-lg text-muted-foreground">
-          Comprehensive fan analytics platform for Rema's team
-        </p>
+      <div className="space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="space-y-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Global Fan Growth Dashboard</h1>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Comprehensive fan analytics platform for any artist's team worldwide
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Select value={selectedArtist} onValueChange={(value: keyof typeof artistData) => setSelectedArtist(value)}>
+              <SelectTrigger className="w-full sm:w-[180px]">
+                <Filter className="h-4 w-4 mr-2" />
+                <SelectValue placeholder="Select Artist" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="rema">Rema</SelectItem>
+                <SelectItem value="ayrastarr">Ayra Starr</SelectItem>
+                <SelectItem value="crayon">Crayon</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Select defaultValue="28days">
+              <SelectTrigger className="w-full sm:w-[140px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="7days">Last 7 days</SelectItem>
+                <SelectItem value="28days">Last 28 days</SelectItem>
+                <SelectItem value="custom">Custom</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        {/* Real-Time Alerts */}
+        <Card className="border-l-4 border-l-primary">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center space-x-2 text-base sm:text-lg">
+              <Bell className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+              <span>Real-Time Alerts</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {realTimeAlerts.map((alert, index) => (
+                <div key={index} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <Badge
+                      variant={
+                        alert.priority === "Critical"
+                          ? "destructive"
+                          : alert.priority === "High"
+                            ? "default"
+                            : "secondary"
+                      }
+                      className="text-xs"
+                    >
+                      {alert.type}
+                    </Badge>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">{alert.message}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {alert.artist} • {alert.time}
+                      </p>
+                    </div>
+                  </div>
+                  <Button size="sm" variant="outline" className="text-xs bg-transparent">
+                    View Details
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Key Metrics */}
@@ -156,7 +297,7 @@ export function FanDashboard() {
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-base sm:text-lg">
               <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-              <span>Geographic Fan Distribution</span>
+              <span>Geographic Fan Distribution - {currentArtist.name}</span>
             </CardTitle>
             <CardDescription className="text-sm">Fan concentration and growth opportunities by market</CardDescription>
           </CardHeader>
@@ -191,6 +332,13 @@ export function FanDashboard() {
                 </div>
               ))}
             </div>
+            <div className="mt-4 p-3 bg-primary/5 rounded-lg border border-primary/20">
+              <p className="text-sm font-medium text-primary">💡 Smart Recommendation</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                France shows 25.4% growth - consider targeted playlist pitches and influencer partnerships in French
+                market
+              </p>
+            </div>
           </CardContent>
         </Card>
 
@@ -199,7 +347,7 @@ export function FanDashboard() {
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-base sm:text-lg">
               <Heart className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-              <span>Social Media Intelligence</span>
+              <span>Social Media Intelligence - {currentArtist.name}</span>
             </CardTitle>
             <CardDescription className="text-sm">Cross-platform engagement and growth tracking</CardDescription>
           </CardHeader>
@@ -272,7 +420,7 @@ export function FanDashboard() {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2 text-base sm:text-lg">
             <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-            <span>AI-Powered Strategic Insights</span>
+            <span>AI-Powered Strategic Insights - {currentArtist.name}</span>
           </CardTitle>
           <CardDescription className="text-sm">
             Automated recommendations based on fan behavior analysis
@@ -315,8 +463,10 @@ export function FanDashboard() {
       {/* Dashboard Features Summary */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base sm:text-lg">Dashboard Core Features</CardTitle>
-          <CardDescription className="text-sm">Comprehensive toolset for artist team decision-making</CardDescription>
+          <CardTitle className="text-base sm:text-lg">Multi-Artist Dashboard Features</CardTitle>
+          <CardDescription className="text-sm">
+            Scalable toolset for any artist team's decision-making process
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
