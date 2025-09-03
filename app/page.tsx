@@ -32,7 +32,7 @@ export default function MavinPresentation() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
             <div>
               <h1 className="text-xl sm:text-2xl font-bold text-foreground">Mavin Records</h1>
-              <p className="text-xs sm:text-sm text-muted-foreground">Digital Intelligence Assessment</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Digital Intelligence Intern</p>
             </div>
             <div className="text-left sm:text-right">
               <p className="text-xs sm:text-sm font-medium text-foreground">Data-Driven Fan Growth Strategy</p>
