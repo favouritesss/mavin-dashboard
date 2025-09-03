@@ -108,7 +108,7 @@ const ChartTooltip = RechartsPrimitive.Tooltip
 
 function ChartTooltipContent({
   active,
-  payload,
+  payload = [], // ✅ default empty array fixes TS error
   className,
   indicator = "dot",
   hideLabel = false,
