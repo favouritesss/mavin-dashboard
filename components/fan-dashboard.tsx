@@ -10,16 +10,16 @@ import { TrendingUp, Users, Globe, Music, MapPin, Target, Zap, Eye, Heart } from
 const dashboardMetrics = [
   {
     title: "Total Fans",
-    value: "2.4M",
-    change: "+12.5%",
+    value: "35.1M",
+    change: "+18.5%",
     trend: "up",
     icon: Users,
     description: "Global fanbase across all platforms",
   },
   {
     title: "Monthly Growth",
-    value: "156K",
-    change: "+8.2%",
+    value: "2.8M",
+    change: "+22.3%",
     trend: "up",
     icon: TrendingUp,
     description: "New fans acquired this month",
@@ -34,7 +34,7 @@ const dashboardMetrics = [
   },
   {
     title: "Engagement Rate",
-    value: "4.8%",
+    value: "2.51%",
     change: "+0.3%",
     trend: "up",
     icon: Music,
@@ -52,10 +52,10 @@ const geographicData = [
 ]
 
 const socialMediaData = [
-  { platform: "Instagram", followers: "1.2M", engagement: 4.8, growth: "+15%" },
-  { platform: "TikTok", followers: "890K", engagement: 8.2, growth: "+156%" },
-  { platform: "Twitter", followers: "450K", engagement: 3.1, growth: "+8%" },
-  { platform: "YouTube", followers: "320K", engagement: 6.4, growth: "+22%" },
+  { platform: "Instagram", followers: "7.1M", engagement: 2.51, growth: "+15%" },
+  { platform: "TikTok", followers: "7.2M", engagement: 8.2, growth: "+156%" },
+  { platform: "Twitter", followers: "2.8M", engagement: 3.1, growth: "+8%" },
+  { platform: "YouTube", followers: "1.2M", engagement: 6.4, growth: "+22%" },
 ]
 
 const campaignData = [
@@ -69,55 +69,75 @@ const campaignData = [
 
 const aiInsights = [
   {
-    type: "Opportunity",
-    title: "France Market Expansion",
-    description: "25.4% growth rate indicates strong potential for targeted campaigns",
-    priority: "High",
-    action: "Launch French-language content strategy",
+    type: "Alert",
+    title: "Spotify Listener Decline",
+    description: "Lost 14.4M listeners in 2024 - need strategic intervention",
+    priority: "Critical",
+    action: "Launch retention campaign immediately",
   },
   {
-    type: "Alert",
-    title: "TikTok Momentum",
-    description: "156% growth suggests viral potential - capitalize immediately",
-    priority: "Critical",
+    type: "Opportunity",
+    title: "TikTok Momentum Strong",
+    description: "7.2M followers with high engagement - capitalize on viral potential",
+    priority: "High",
     action: "Increase TikTok content frequency by 3x",
   },
   {
     type: "Trend",
-    title: "Afrobeats Global Rise",
-    description: "Genre trending +340% in non-African markets",
+    title: "Instagram Engagement Solid",
+    description: "7.1M followers with 2.51% engagement rate above industry average",
     priority: "Medium",
-    action: "Position Rema as Afrobeats ambassador",
+    action: "Maintain current Instagram strategy",
   },
 ]
 
 export function FanDashboard() {
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-black/90 border border-white/20 rounded-lg p-3 shadow-lg">
+          <p className="text-white font-medium" style={{ textShadow: "1px 1px 2px black" }}>
+            {label}
+          </p>
+          {payload.map((entry: any, index: number) => (
+            <p key={index} className="text-white text-sm" style={{ textShadow: "1px 1px 2px black" }}>
+              {`${entry.name}: ${entry.value.toLocaleString()}`}
+            </p>
+          ))}
+        </div>
+      )
+    }
+    return null
+  }
+
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-foreground">Fan Intelligence Dashboard</h1>
-        <p className="text-lg text-muted-foreground">Comprehensive fan analytics platform for Rema's team</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Fan Intelligence Dashboard</h1>
+        <p className="text-base sm:text-lg text-muted-foreground">
+          Comprehensive fan analytics platform for Rema's team
+        </p>
       </div>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {dashboardMetrics.map((metric) => {
           const Icon = metric.icon
           return (
             <Card key={metric.title} className="relative overflow-hidden">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-sm font-medium text-muted-foreground">{metric.title}</CardTitle>
+                  <CardTitle className="text-xs sm:text-sm font-medium text-muted-foreground">{metric.title}</CardTitle>
                   <div className="p-2 bg-primary/10 rounded-lg">
-                    <Icon className="h-4 w-4 text-primary" />
+                    <Icon className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-2">
-                <div className="text-2xl font-bold text-foreground">{metric.value}</div>
+                <div className="text-xl sm:text-2xl font-bold text-foreground">{metric.value}</div>
                 <div className="flex items-center space-x-2">
-                  <Badge variant="secondary" className="bg-accent/10 text-accent">
+                  <Badge variant="secondary" className="bg-accent/10 text-accent text-xs">
                     {metric.change}
                   </Badge>
                   <span className="text-xs text-muted-foreground">from last month</span>
@@ -130,37 +150,43 @@ export function FanDashboard() {
       </div>
 
       {/* Dashboard Features Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Geographic Fan Mapping */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <MapPin className="h-5 w-5 text-primary" />
+            <CardTitle className="flex items-center space-x-2 text-base sm:text-lg">
+              <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
               <span>Geographic Fan Distribution</span>
             </CardTitle>
-            <CardDescription>Fan concentration and growth opportunities by market</CardDescription>
+            <CardDescription className="text-sm">Fan concentration and growth opportunities by market</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {geographicData.slice(0, 4).map((country, index) => (
-                <div key={country.country} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                  <div className="flex items-center space-x-3">
-                    <Badge variant="outline" className="w-8 h-8 rounded-full flex items-center justify-center">
+                <div
+                  key={country.country}
+                  className="flex items-center justify-between p-2 sm:p-3 bg-muted/50 rounded-lg"
+                >
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <Badge
+                      variant="outline"
+                      className="w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs"
+                    >
                       {index + 1}
                     </Badge>
                     <div>
-                      <p className="font-medium text-foreground">{country.country}</p>
-                      <p className="text-sm text-muted-foreground">{country.fans.toLocaleString()} fans</p>
+                      <p className="font-medium text-foreground text-sm sm:text-base">{country.country}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">{country.fans.toLocaleString()} fans</p>
                     </div>
                   </div>
                   <div className="text-right">
                     <Badge
                       variant={country.opportunity === "Very High" ? "default" : "secondary"}
-                      className={country.opportunity === "Very High" ? "bg-primary text-primary-foreground" : ""}
+                      className={`text-xs ${country.opportunity === "Very High" ? "bg-primary text-primary-foreground" : ""}`}
                     >
                       {country.opportunity}
                     </Badge>
-                    <p className="text-sm text-accent mt-1">+{country.growth}%</p>
+                    <p className="text-xs sm:text-sm text-accent mt-1">+{country.growth}%</p>
                   </div>
                 </div>
               ))}
@@ -171,26 +197,28 @@ export function FanDashboard() {
         {/* Social Media Performance */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <Heart className="h-5 w-5 text-primary" />
+            <CardTitle className="flex items-center space-x-2 text-base sm:text-lg">
+              <Heart className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
               <span>Social Media Intelligence</span>
             </CardTitle>
-            <CardDescription>Cross-platform engagement and growth tracking</CardDescription>
+            <CardDescription className="text-sm">Cross-platform engagement and growth tracking</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {socialMediaData.map((platform) => (
                 <div key={platform.platform} className="space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <span className="font-medium text-foreground">{platform.platform}</span>
-                      <Badge variant="outline">{platform.followers}</Badge>
+                      <span className="font-medium text-foreground text-sm sm:text-base">{platform.platform}</span>
+                      <Badge variant="outline" className="text-xs">
+                        {platform.followers}
+                      </Badge>
                     </div>
-                    <Badge variant="secondary" className="bg-accent/10 text-accent">
+                    <Badge variant="secondary" className="bg-accent/10 text-accent text-xs">
                       {platform.growth}
                     </Badge>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center justify-between text-xs sm:text-sm">
                     <span className="text-muted-foreground">Engagement Rate</span>
                     <span className="font-medium text-foreground">{platform.engagement}%</span>
                   </div>
@@ -205,25 +233,19 @@ export function FanDashboard() {
       {/* Campaign Performance Chart */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Target className="h-5 w-5 text-primary" />
+          <CardTitle className="flex items-center space-x-2 text-base sm:text-lg">
+            <Target className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
             <span>Campaign Performance Tracking</span>
           </CardTitle>
-          <CardDescription>Real-time campaign metrics and ROI analysis</CardDescription>
+          <CardDescription className="text-sm">Real-time campaign metrics and ROI analysis</CardDescription>
         </CardHeader>
         <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={250} className="sm:h-[300px]">
             <AreaChart data={campaignData}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-              <XAxis dataKey="month" stroke="var(--color-muted-foreground)" />
-              <YAxis stroke="var(--color-muted-foreground)" />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "var(--color-card)",
-                  border: "1px solid var(--color-border)",
-                  borderRadius: "8px",
-                }}
-              />
+              <XAxis dataKey="month" stroke="var(--color-muted-foreground)" fontSize={12} />
+              <YAxis stroke="var(--color-muted-foreground)" fontSize={12} />
+              <Tooltip content={<CustomTooltip />} />
               <Area
                 type="monotone"
                 dataKey="reach"
@@ -248,16 +270,18 @@ export function FanDashboard() {
       {/* AI-Powered Insights */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Zap className="h-5 w-5 text-primary" />
+          <CardTitle className="flex items-center space-x-2 text-base sm:text-lg">
+            <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
             <span>AI-Powered Strategic Insights</span>
           </CardTitle>
-          <CardDescription>Automated recommendations based on fan behavior analysis</CardDescription>
+          <CardDescription className="text-sm">
+            Automated recommendations based on fan behavior analysis
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {aiInsights.map((insight, index) => (
-              <div key={index} className="p-4 border border-border rounded-lg space-y-3">
+              <div key={index} className="p-3 sm:p-4 border border-border rounded-lg space-y-3">
                 <div className="flex items-center justify-between">
                   <Badge
                     variant={
@@ -267,7 +291,7 @@ export function FanDashboard() {
                           ? "default"
                           : "secondary"
                     }
-                    className={insight.priority === "High" ? "bg-primary text-primary-foreground" : ""}
+                    className={`text-xs ${insight.priority === "High" ? "bg-primary text-primary-foreground" : ""}`}
                   >
                     {insight.type}
                   </Badge>
@@ -276,8 +300,8 @@ export function FanDashboard() {
                   </Badge>
                 </div>
                 <div>
-                  <h4 className="font-medium text-foreground">{insight.title}</h4>
-                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{insight.description}</p>
+                  <h4 className="font-medium text-foreground text-sm sm:text-base">{insight.title}</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed">{insight.description}</p>
                 </div>
                 <Button size="sm" variant="outline" className="w-full text-xs bg-transparent">
                   {insight.action}
@@ -291,13 +315,13 @@ export function FanDashboard() {
       {/* Dashboard Features Summary */}
       <Card>
         <CardHeader>
-          <CardTitle>Dashboard Core Features</CardTitle>
-          <CardDescription>Comprehensive toolset for artist team decision-making</CardDescription>
+          <CardTitle className="text-base sm:text-lg">Dashboard Core Features</CardTitle>
+          <CardDescription className="text-sm">Comprehensive toolset for artist team decision-making</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Real-Time Analytics</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-foreground">Real-Time Analytics</h3>
               <div className="space-y-3">
                 {[
                   { feature: "Cross-platform fan tracking", icon: Users },
@@ -308,8 +332,8 @@ export function FanDashboard() {
                   const Icon = item.icon
                   return (
                     <div key={index} className="flex items-center space-x-3 p-2 bg-muted/30 rounded-lg">
-                      <Icon className="h-4 w-4 text-primary" />
-                      <span className="text-sm text-foreground">{item.feature}</span>
+                      <Icon className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
+                      <span className="text-xs sm:text-sm text-foreground">{item.feature}</span>
                     </div>
                   )
                 })}
@@ -317,7 +341,7 @@ export function FanDashboard() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Strategic Intelligence</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-foreground">Strategic Intelligence</h3>
               <div className="space-y-3">
                 {[
                   { feature: "AI-powered market insights", icon: Zap },
@@ -328,8 +352,8 @@ export function FanDashboard() {
                   const Icon = item.icon
                   return (
                     <div key={index} className="flex items-center space-x-3 p-2 bg-primary/5 rounded-lg">
-                      <Icon className="h-4 w-4 text-primary" />
-                      <span className="text-sm text-foreground">{item.feature}</span>
+                      <Icon className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
+                      <span className="text-xs sm:text-sm text-foreground">{item.feature}</span>
                     </div>
                   )
                 })}
