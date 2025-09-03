@@ -48,8 +48,8 @@ const platformMetrics = [
   {
     platform: "Spotify",
     icon: Music,
-    totalStreams: "8.5M",
-    growth: "+15.2%",
+    totalStreams: "20.8M",
+    growth: "-14.4%",
     topMarket: "Nigeria",
     engagement: 87,
   },
@@ -64,7 +64,7 @@ const platformMetrics = [
   {
     platform: "TikTok",
     icon: Heart,
-    totalUses: "450K",
+    totalUses: "7.2M",
     growth: "+156%",
     topMarket: "US",
     engagement: 92,
