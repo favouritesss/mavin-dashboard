@@ -108,7 +108,7 @@ const ChartTooltip = RechartsPrimitive.Tooltip
 
 function ChartTooltipContent({
   active,
-  payload = [], // ✅ default empty array fixes TS error
+  payload = [],
   className,
   indicator = "dot",
   hideLabel = false,
@@ -120,11 +120,24 @@ function ChartTooltipContent({
   color,
   nameKey,
   labelKey,
-}: TooltipProps<number, string> & {
+}: {
+  active?: boolean
+  payload?: any[] // ✅ force payload to exist
   className?: string
   hideLabel?: boolean
   hideIndicator?: boolean
   indicator?: "line" | "dot" | "dashed"
+  label?: string
+  labelFormatter?: (value: any, payload: any[]) => React.ReactNode
+  labelClassName?: string
+  formatter?: (
+    value: any,
+    name: any,
+    item: any,
+    index: number,
+    extra: any
+  ) => React.ReactNode
+  color?: string
   nameKey?: string
   labelKey?: string
 }) {
